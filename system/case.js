@@ -96,8 +96,8 @@ module.exports = async (m, sock, store) => {
       {
         let input = m.isQuoted ? m.quoted.body : m.text;
         if (!input) return m.reply("> Reply/Masukan pessn");
-        let avatar = await conn.profilePictureUrl(m.sender, "image").catch(_ => "https://telegra.ph/file/89c1638d9620584e6e140.png")
-        let media = await quoted.download()
+        let avatar = await sock.profilePictureUrl(m.sender, "image").catch(_ => "https://telegra.ph/file/89c1638d9620584e6e140.png")
+        let name = m.pushName
         const pickRandom = (arr) => {
         return arr[Math.floor(Math.random() * arr.length)]
         }
@@ -105,9 +105,10 @@ module.exports = async (m, sock, store) => {
         const { data } = await axios.post("https://quotly.netorare.codes/generate", json, {
         headers: {
         "Content-Type": "application/json"
-        }
+        }})
         m.reply(config.messages.wait);
-        let media = Buffer.from(data.result.image, "base64")
+
+        const media = Buffer.from(data.result.image, "base64")
         let sticker = await writeExif(
           {
             mimetype: "image",

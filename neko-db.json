@@ -1,0 +1,39 @@
+{
+  "user": {
+    "6287701656619@s.whatsapp.net": {
+      "limit": 100,
+      "register": false,
+      "premium": {
+        "status": false,
+        "expired": 0
+      },
+      "banned": {
+        "status": false,
+        "expired": 0
+      }
+    },
+    "6285774305729@s.whatsapp.net": {
+      "name": "𝘫𝘪𝘩𝘢𝘯𝘯𝘯 🐾🫧",
+      "limit": 100,
+      "register": false,
+      "premium": {
+        "status": false,
+        "expired": 0
+      },
+      "banned": {
+        "status": false,
+        "expired": 0
+      }
+    }
+  },
+  "group": {},
+  "changelog": {},
+  "settings": {
+    "self": true,
+    "online": true,
+    "anticall": false,
+    "blockcmd": [],
+    "max_upload": "50MB",
+    "resetlimit": "02:00"
+  }
+}

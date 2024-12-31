@@ -44,7 +44,7 @@ module.exports = {
       let premium = db.list().user[m.sender].premium.status
     let limit = db.list().user[m.sender].limit
       let caption = `*🍟 Selamat datang di Dashboard bot*
-Nama saya nekoBot - , Berikut list command bot ini
+Berikut list command bot ini
 
 *– 乂 Info User*
 > *- Nama :* ${m.pushName}
@@ -58,7 +58,6 @@ Nama saya nekoBot - , Berikut list command bot ini
 > *- Runtime :* ${Func.toDate(process.uptime() * 1000)}
 > *- Prefix :* [ ${m.prefix} ]
 > *- Total fitur :* ${cmd + alias + matches.length}
-> *- Source code :* https://github.com/AxellNetwork/NekoBot
 
 > *- Fitur Limit :* [L]
 > *- Fitur Premium :* [P]
@@ -67,12 +66,12 @@ Nama saya nekoBot - , Berikut list command bot ini
 
 *– 乂 M e n u - O t h e r*
 
-${matches.map((a, i) => `*${i + 1}.* ${m.prefix + a}\n> Fitur sampingan ( Case Fitur )`).join("\n")} 
+${matches.map((a, i) => `*${i + 1}.* ${m.prefix + a}`).join("\n")} 
 `
 Object.entries(menu).forEach(([tag, commands]) => {
     caption += `\n*– 乂 M e n u – ${tag.split('').join(' ').capitalize()}*\n\n`;
     commands.command.forEach((command, index) => {
-        caption += `*${index + 1}.* ${m.prefix + command.name} ${command.settings?.limit ? "*[L]*" : ''}\n${command.description ? `> ${command.description}\n` : ''}`
+        caption += `*${index + 1}.* ${m.prefix + command.name} ${command.settings?.limit ? "*[L]*" : ''}\n`
             });
       });   
       m.reply({
@@ -87,7 +86,7 @@ Object.entries(menu).forEach(([tag, commands]) => {
                buttonText: {
                    displayText: "⚡ Ping Bot"
               }
-          },{
+          },/*{
              buttonId: ".script",
                buttonText: {
                    displayText: "👾 Script Bot"
@@ -97,7 +96,7 @@ Object.entries(menu).forEach(([tag, commands]) => {
                buttonText: {
                    displayText: "👥 Top Contribute"
               }
-          }],
+          }*/],
           viewOnce: true,
           headerType: 6,
        })

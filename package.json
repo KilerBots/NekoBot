@@ -25,8 +25,8 @@
   "dependencies": {
     "@distube/ytdl-core": "^4.15.8",
     "awesome-phonenumber": "^7.2.0",
-    "baileys": "github:AxellNetwork/Baileys",
-    "canvas": "^2.11.2",
+    "baileys": "npm:@rulzz2nd/baileys-emde",
+    "canvas": "^3.0.0",
     "chalk": "^4.1.2",
     "cheerio": "^1.0.0",
     "chokidar": "^4.0.1",

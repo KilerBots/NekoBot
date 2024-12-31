@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 
 const config = {
-    owner: ["6287701656619"],
+    owner: [6287701656619, 6285774305729],
     name: "- NekoBot - Simple WhatsApp bot",
     sessions: "sessions",
     sticker: {
