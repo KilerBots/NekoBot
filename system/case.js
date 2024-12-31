@@ -92,6 +92,36 @@ module.exports = async (m, sock, store) => {
         await m.reply({ sticker });
       }
       break;
+      case "qc":
+      {
+        let input = m.isQuoted ? m.quoted.body : m.text;
+        if (!input) return m.reply("> Reply/Masukan pessn");
+        let avatar = await conn.profilePictureUrl(m.sender, "image").catch(_ => "https://telegra.ph/file/89c1638d9620584e6e140.png")
+        let media = await quoted.download()
+        const pickRandom = (arr) => {
+        return arr[Math.floor(Math.random() * arr.length)]
+        }
+        const json = { type: "quote", format: "png", backgroundColor: "#FFFFFF", width: 512, height: 768,scale: 2, messages: [{ entities: [], avatar: true, from: { id: pickRandom([0,4,5,3,2,7,5,9,8,1,6,10,9,7,5,3,1,2,4,6,8,0,10]), name, photo: { url: avatar }}, text: input, replyMessage: {} }]}
+        const { data } = await axios.post("https://quotly.netorare.codes/generate", json, {
+        headers: {
+        "Content-Type": "application/json"
+        }
+        m.reply(config.messages.wait);
+        let media = Buffer.from(data.result.image, "base64")
+        let sticker = await writeExif(
+          {
+            mimetype: "image",
+            data: media,
+          },
+          {
+            packName: config.sticker.packname,
+            packPublish: config.sticker.author,
+          },
+        );
+
+        await m.reply({ sticker });
+      }
+      break;
     default:
       if (
         [">", "eval", "=>"].some((a) =>
