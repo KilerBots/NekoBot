@@ -77,7 +77,7 @@ module.exports = async (m, sock, store) => {
         let input = m.isQuoted ? m.quoted.body : m.text;
         if (!input) return m.reply("> Reply/Masukan pessn");
         m.reply(config.messages.wait);
-        let media = await scrape.brat(input);
+        let media = await Func.fetchBuffer("https://brat.lick.eu.org/generate?query=" + input);
         let sticker = await writeExif(
           {
             mimetype: "image",
